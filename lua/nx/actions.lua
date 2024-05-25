@@ -28,7 +28,9 @@ function _M.actions_finder(opts)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
 					local selection = action_state.get_selected_entry()
-					_M.run_action(selection[1])
+					if selection and selection[1] then
+						_M.run_action(selection[1])
+					end
 					-- print(vim.inspect(selection))
 				end)
 				return true
